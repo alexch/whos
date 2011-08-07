@@ -1,0 +1,84 @@
+#!/usr/bin/env ruby
+
+require 'rubygems'
+
+libdir = "#{File.expand_path(File.dirname(File.dirname(__FILE__)))}/lib"
+$LOAD_PATH.unshift libdir unless $LOAD_PATH.include?(libdir)
+
+load "#{libdir}/../whos.gemspec" # defines "$spec" variable, which we read the version from
+
+require 'whos'
+
+require 'optparse'
+
+options = {}
+
+opts = OptionParser.new("", 24, '  ') { |opts|
+  opts.banner = "Usage: whos domain..."
+
+  opts.separator ""
+  opts.separator "Runs 'whois domain' and then strips the registrar bullshit."
+  opts.separator "See http://github.com/alexch/whos for more info."
+  opts.separator ""
+  opts.separator "Options:"
+
+  opts.on("-v", "--verbose", "show all domain info if it exists") do
+    $verbose = true
+  end
+
+  opts.on("-o", "--open", "open found host in web browser") do
+    $open = true
+  end
+
+  opts.on_tail("-h", "--help", "--usage", "show this message") do
+    puts opts
+    exit
+  end
+
+  opts.on_tail("--version", "show version") do
+    puts $spec.version
+    exit
+  end
+
+  opts.parse! ARGV
+}
+
+if ARGV.empty?
+  puts opts
+  exit
+end
+
+
+@spam = Whos::Spam.new
+
+def check domain
+  print "Checking #{domain}..."
+  response = `whois #{domain}`
+
+  if response =~ /^No match for/
+    puts " AVAILABLE!"
+    true
+  else
+    puts " exists :-("
+    if $verbose
+      response.each_line do |line|
+        puts line unless @spam.include? line.strip
+      end
+    end
+    false
+  end
+end
+
+ARGV.each do |domain|
+  if domain =~ /\./
+    check domain
+  else
+    puts "no dot in #{domain}"
+    %w{com net org biz}.each do |tld|
+      host = "#{domain}.#{tld}"
+      available = check(host)
+      `open http://#{host}` if !available and $open
+    end
+  end
+end
+
