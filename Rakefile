@@ -52,7 +52,66 @@ file package('.tar.gz') => %w[pkg/] + $spec.files do |f|
   sh cmd.gsub(/ +/, ' ')
 end
 
-desc 'Publish gem and tarball to rubyforge'
-task 'release' => [package('.gem'), package('.tar.gz')] do |t|
+module System
+  def sys(cmd, *flags)
+    fail_ok = flags.include? :fail_ok
+    quiet = flags.include? :quiet
+    puts ">> #{cmd}" unless quiet
+    result = `#{cmd}`
+    raise "#{cmd} failed with exit status #{$?.exitstatus}" unless $?.success? || fail_ok
+    result.chomp
+  end
+
+  def find_git
+    dirs = ["", "/opt/local/bin/", "/usr/local/bin/", "/usr/bin/"]
+    dirs.each do |dir|
+      file = dir + "git"
+      if File.exist?(file)
+        return file
+      end
+    end
+    raise "Couldn't find git in #{dirs.inspect}"
+  end
+
+  def git(cmd, *flags)
+    flags << :fail_ok  # why?
+    bin = @git_bin || find_git
+    sys("#{bin} #{cmd}", *flags)
+  end
+  
+  def git_clean?
+    out = git("status --porcelain", :quiet)
+    out.strip == ""
+  end
+  
+  def git_branch
+    git("branch").split.last
+  end
+
+  def heroku(cmd)
+    sys("heroku #{cmd}")
+  end
+
+  def timed(msg)
+    start =Time.now
+    puts "#{msg} starting"
+    yield
+    dur = Time.now - start
+    puts "#{msg} took %d:%02d" % [dur / 60, dur % 60]
+  end
+end
+
+task :tag do
+  include System
+  unless git_clean?
+    warn "Can't tag an unclean git repo."
+    puts git( "status --short")
+    exit 1
+  end
+  git "tag --force v#{$spec.version}", false
+end
+
+desc 'Tag and publish gem to rubygems'
+task 'release' => [package('.gem'), package('.tar.gz'), :tag] do
   sh "gem push #{package('.gem')}"
 end

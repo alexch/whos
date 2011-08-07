@@ -34,8 +34,12 @@ Written in a fit of pique by Alex Chaffee <http://alexch.github.com>
 
 # Possible Improvements
 
-Cloud shared spam db _a la_ [cheat](http://cheat.errtheblog.com)
+* shared spam db _a la_ [cheat](http://cheat.errtheblog.com)
 
+# Release History
 
+== 0.1.2 2011/08/07
+
+First real release
 
 
