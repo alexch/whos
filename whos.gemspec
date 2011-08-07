@@ -3,7 +3,7 @@ $spec = Gem::Specification.new do |s|
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
 
   s.name = 'whos'
-  s.version = '0.1.0'
+  s.version = '0.1.1'
 
   s.description = "Wraps whois and removes the BS"
   s.summary     = "Wraps whois and removes the BS."
@@ -29,6 +29,5 @@ $spec = Gem::Specification.new do |s|
 
   s.homepage = "http://github.com/alexch/whos/"
   s.require_paths = %w[lib]
-  s.rubyforge_project = 'pivotalrb'
   s.rubygems_version = '1.1.1'
 end
