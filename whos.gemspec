@@ -6,7 +6,7 @@ $spec = Gem::Specification.new do |s|
   s.version = '0.1.1'
 
   s.description = "Wraps whois and removes the BS"
-  s.summary     = "Wraps whois and removes the BS."
+  s.summary     = "Wraps whois and removes the registrar legal/marketing spam from the response."
 
   s.authors = ["Alex Chaffee"]
   s.email = "alex@stinky.com"
@@ -16,10 +16,7 @@ $spec = Gem::Specification.new do |s|
     LICENSE
     Rakefile
     whos.gemspec
-    bin/whos
-    lib/whos.rb
-    lib/whos/spam.rb
-  ]
+    bin/whos] + Dir.glob("lib/**/*.rb")
   s.executables = ['whos']
   s.test_files = s.files.select {|path| path =~ /^spec\/.*_spec.rb/}
 

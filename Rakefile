@@ -15,10 +15,10 @@ end
 
 $spec =
   begin
-    require 'rubygems/specification'
+    require 'rubygems/specification'    
     data = File.read('whos.gemspec')
     spec = nil
-    Thread.new { spec = eval("$SAFE = 3\n#{data}") }.join
+    Thread.new { spec = eval("$SAFE = 2\n#{data}") }.join
     spec
   end
 

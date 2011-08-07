@@ -1,5 +1,6 @@
 require "rubygems"
 require "rspec"
-#require "rspec/autorun"
+require "wrong/adapters/rspec"
+
 here = File.expand_path(File.dirname(__FILE__))
-require "#{here}/../lib/whos"
+$: << "#{here}/../lib"
