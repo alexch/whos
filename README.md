@@ -42,4 +42,10 @@ Written in a fit of pique by Alex Chaffee <http://alexch.github.com>
 
 First real release
 
+== 0.1.3 2011/08/24
+
+Added verisign spam
+
+
+
 
