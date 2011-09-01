@@ -46,6 +46,9 @@ First real release
 
 Added verisign spam
 
+== 0.1.4 2011/09/01
 
+Fixed "host" bug in --open option``
+More spam
 
 

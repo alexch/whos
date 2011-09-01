@@ -33,7 +33,7 @@ module Whos
         
       domains.each do |domain|
         available = available? domain
-        `open http://#{host}` if !available and $open
+        `open http://#{domain}` if !available and $open
       end
     end
   end
