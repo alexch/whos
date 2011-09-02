@@ -51,8 +51,8 @@ Added verisign spam
 Fixed "host" bug in --open option`	`
 More spam
 
-== 0.1.5 2011/09/02
+== 0.1.6 2011/09/02
 
 Fixed whitespace matching bug (catches way more spam now)
-
+Oops! spam db was not included by gemspec!
 

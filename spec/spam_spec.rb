@@ -21,6 +21,10 @@ module Whos
       assert { @spam.include? "\n" }
     end
     
+    it "rejects neustar dot biz (bug)" do
+      assert { @spam.include? "NeuStar, Inc., the Registry Operator for .BIZ, has collected this information"}
+    end
+    
     it "rejects most of `whois foo.com`" do
       here = File.expand_path(File.dirname(__FILE__))            
       text = File.read("#{here}/foo.com.txt")

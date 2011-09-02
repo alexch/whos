@@ -3,7 +3,7 @@ $spec = Gem::Specification.new do |s|
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
 
   s.name = 'whos'
-  s.version = '0.1.5'
+  s.version = '0.1.6'
 
   s.description = "Wraps whois and removes the BS"
   s.summary     = "Wraps whois and removes the registrar legal/marketing spam from the response."
@@ -16,7 +16,9 @@ $spec = Gem::Specification.new do |s|
     LICENSE
     Rakefile
     whos.gemspec
-    bin/whos] + Dir.glob("lib/**/*.rb")
+    bin/whos] + 
+    Dir.glob("lib/**/*.rb") + 
+    Dir.glob("spam/**/*.txt")
   s.executables = ['whos']
   s.test_files = s.files.select {|path| path =~ /^spec\/.*_spec.rb/}
 
