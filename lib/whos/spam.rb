@@ -9,19 +9,23 @@ module Whos
       end
     end
     
+    def << s
+      @lines << s.strip
+    end
+    
     def read file
       File.read(file).each_line do |line|
-        @lines << line.chomp.strip
+        self << line
       end
     end
     
     def include? s
-      @lines.include? s.strip
+      s.strip!
+      s == "" or @lines.include? s
     end
     
     def filter s
       s.each_line.reject do |line|
-        line.chomp!
         include? line
       end.join("\n")
     end
