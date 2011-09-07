@@ -53,8 +53,8 @@ Written in a fit of pique by Alex Chaffee <http://alexch.github.com>
 * Fixed whitespace matching bug (catches way more spam now)
 * Oops! spam db was not included by gemspec!
 
-== 0.1.7 2011/09/06
+== 0.2.0 2011/09/06
 * More TLDs (com net org biz info us)
 * Parallel lookup (much faster)
 * More spam
-
+* Cleaner verbose output
