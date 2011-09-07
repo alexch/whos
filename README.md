@@ -35,24 +35,26 @@ Written in a fit of pique by Alex Chaffee <http://alexch.github.com>
 # Possible Improvements
 
 * shared spam db _a la_ [cheat](http://cheat.errtheblog.com)
+* specify TLDs (com net org biz info us)
 
 # Release History
 
 == 0.1.2 2011/08/07
-
-First real release
+* First real release
 
 == 0.1.3 2011/08/24
-
-Added verisign spam
+* Added verisign spam
 
 == 0.1.4 2011/09/01
-
-Fixed "host" bug in --open option`	`
-More spam
+* Fixed "host" bug in --open option`	`
+* More spam
 
 == 0.1.6 2011/09/02
+* Fixed whitespace matching bug (catches way more spam now)
+* Oops! spam db was not included by gemspec!
 
-Fixed whitespace matching bug (catches way more spam now)
-Oops! spam db was not included by gemspec!
+== 0.1.7 2011/09/06
+* More TLDs (com net org biz info us)
+* Parallel lookup (much faster)
+* More spam
 
