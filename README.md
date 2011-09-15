@@ -37,6 +37,11 @@ Written in a fit of pique by Alex Chaffee <http://alexch.github.com>
 * shared spam db _a la_ [cheat](http://cheat.errtheblog.com)
 * specify TLDs (com net org biz info us)
 
+# Similar
+
+* http://domai.nr/
+* https://github.com/weppos/whois
+
 # Release History
 
 == 0.1.2 2011/08/07
@@ -58,3 +63,7 @@ Written in a fit of pique by Alex Chaffee <http://alexch.github.com>
 * Parallel lookup (much faster)
 * More spam
 * Cleaner verbose output
+
+== 0.2.1 2011/09/15
+* More spam
+
