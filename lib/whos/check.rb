@@ -3,12 +3,12 @@ require 'peach'
 module Whos
   class Check
     attr_reader :responses
-    
+
     def initialize
       @spam = Whos::Spam.new
       @responses = {}
     end
-    
+
     def available? domain
       response = `whois #{domain}`
 
@@ -19,9 +19,9 @@ module Whos
         false
       end
     end
-    
+
     def tlds
-      %w{com net org biz info us}
+      %w{com net org biz info us cc it}
     end
 
     def many names

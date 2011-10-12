@@ -34,8 +34,11 @@ Written in a fit of pique by Alex Chaffee <http://alexch.github.com>
 
 # Possible Improvements
 
+* local spam db e.g. ~/.whos/annoyingregistrar.txt
 * shared spam db _a la_ [cheat](http://cheat.errtheblog.com)
-* specify TLDs (com net org biz info us)
+* specify TLDs (currently: com net org biz info us it)
+* BUG: an error in DNS lookup comes through as "not available" (or maybe "available" -- either way we need three states)
+* BUG: doesn't recognize annoying "WHOIS LIMIT EXCEEDED" from .org registrar http://www.pir.org/WHOIS#q5
 
 # Similar
 
@@ -66,4 +69,7 @@ Written in a fit of pique by Alex Chaffee <http://alexch.github.com>
 
 == 0.2.1 2011/09/15
 * More spam
+
+==
+* add .it TLD
 
